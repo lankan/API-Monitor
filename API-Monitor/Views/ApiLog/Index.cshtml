@@ -1,0 +1,62 @@
+﻿
+<div id="main" class="panel panel-default" ng-controller="ApiLogController">
+    <div class="panel-heading">
+        <div class="panel-body">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <p>
+                            <input class="form-control" id="searchQuery" placeholder="Filter By" ng-model="query" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        API
+                                    </th>
+                                    <th>
+                                        Time
+                                    </th>
+                                    <th>
+                                        Unique ID
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in api | filter : query">
+                                    <td>
+                                        {{x.api_name}}
+                                    </td>
+                                    <td>
+                                        {{x.timeStamp}}
+                                    </td>
+                                    <td>
+                                        {{x.id}}
+                                    </td>
+                                    <td>
+                                        <a ng-href="@Url.Content("~/apilog/Details/"){{x.id}}">Details</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!--content-->
+        </div>
+    </div>
+
+</div>
+

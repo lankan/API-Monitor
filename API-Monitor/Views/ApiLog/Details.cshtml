@@ -1,0 +1,66 @@
+﻿@model API_Monitor.Models.ApiLog
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<script type="text/JavaScript">
+    window.onload = function() {
+        var txt = @ViewBag.JSON;
+      txt.value = window.onload + '';
+      document.getElementById('link').onclick = function(code) {
+        this.href = 'data:text/plain;charset=utf-8,'
+          + encodeURIComponent(txt.value);
+      };
+    };
+ 
+    main();
+</script>
+
+<br />
+<br />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <div class="panel-body">
+
+            <h3>Detailed API Log</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.id)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.id)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.timeStamp)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.timeStamp)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.api_name)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.api_name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.JSON_obj)
+                    </dt>
+                    <dd>
+                        <textarea id="myTextArea" cols=50 rows=10>@Html.Raw(Model.JSON_obj.ToString())</textarea>
+
+                        @*<input type="text" value="@Html.Raw(Model.JSON_obj.ToString())" />*@
+                        @*<a href="" id="link" download="code.txt">Download Above Code</a>*@
+
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
