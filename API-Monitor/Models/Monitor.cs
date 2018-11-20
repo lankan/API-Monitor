@@ -20,7 +20,9 @@ namespace API_Monitor.Models
 
         public void InsertMongos(ApiLog obj)
         {
-            var client = new MongoClient();
+            MongoUrl url = new MongoUrl("mongodb://192.168.91.137"); 
+
+            var client = new MongoClient(url);
 
             var database = client.GetDatabase("_apilog");
             
