@@ -21,6 +21,7 @@ namespace API_Monitor.Models
         public void InsertMongos(ApiLog obj)
         {
             var client = new MongoClient();
+
             var database = client.GetDatabase("_apilog");
             
             var collection = database.GetCollection<ApiLog>("_logs");
